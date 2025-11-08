@@ -1,7 +1,4 @@
-﻿using RCON.Commands;
-using RCON.Core.Interfaces;
-using System.Collections.Generic;
-using System.Linq;
+﻿using RCON.Core.Interfaces;
 
 namespace RCON.Commands.Minecraft.Java
 {
@@ -25,7 +22,7 @@ namespace RCON.Commands.Minecraft.Java
         /// </summary>
         public WhitelistListResult(IReadOnlyList<string> players)
         {
-            Players = players ?? new List<string>();
+            Players = players ?? [];
         }
     }
 
@@ -208,7 +205,7 @@ namespace RCON.Commands.Minecraft.Java
             if (colonIndex == -1)
                 return new WhitelistListResult(players.AsReadOnly());
 
-            var playersPart = response.Substring(colonIndex + 1).Trim();
+            var playersPart = response[(colonIndex + 1)..].Trim();
             if (string.IsNullOrEmpty(playersPart))
                 return new WhitelistListResult(players.AsReadOnly());
 

@@ -1,14 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <ItemGroup>
-    <ProjectReference Include="..\RCON.Net\RCON.Net.Core.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\RCON.Net\RCON.Net.Core.csproj" />
+	</ItemGroup>
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-	<RootNamespace>RCON.Commands</RootNamespace>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<RootNamespace>RCON.Commands</RootNamespace>
+
+		<PackageId>RCON.Net.Commands</PackageId>
+		<Authors>Mark Carlsen</Authors>
+		<Description>RCON command lib.</Description>
+		<PackageTags>RCON</PackageTags>
+	</PropertyGroup>
 
 </Project>

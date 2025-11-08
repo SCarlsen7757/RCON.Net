@@ -1,14 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <ItemGroup>
-    <ProjectReference Include="..\RCON.Net.Commands\RCON.Net.Commands.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\RCON.Net.Commands\RCON.Net.Commands.csproj" />
+	</ItemGroup>
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <RootNamespace>RCON.Commands.Minecraft.Java</RootNamespace>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<RootNamespace>RCON.Commands.Minecraft.Java</RootNamespace>
+
+		<PackageId>RCON.Net.Commands.Minecraft.Java</PackageId>
+		<Authors>Mark Carlsen</Authors>
+		<Description>RCON commands lib for Minecraft Java edition.</Description>
+		<PackageTags>RCON;Commands;Minecraft</PackageTags>
+	</PropertyGroup>
 
 </Project>

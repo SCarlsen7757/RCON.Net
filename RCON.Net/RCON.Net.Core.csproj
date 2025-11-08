@@ -1,10 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-	<RootNamespace>RCON.Core</RootNamespace>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<RootNamespace>RCON.Core</RootNamespace>
+
+		<PackageId>RCON.Net</PackageId>
+		<Authors>Mark Carlsen</Authors>
+		<Description>RCON client core lib.</Description>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<PackageTags>RCON</PackageTags>
+	</PropertyGroup>
 
 </Project>
