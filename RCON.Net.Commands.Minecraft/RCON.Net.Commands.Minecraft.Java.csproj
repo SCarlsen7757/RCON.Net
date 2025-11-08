@@ -1,10 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <ItemGroup>
+    <ProjectReference Include="..\RCON.Net.Commands\RCON.Net.Commands.csproj" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	<RootNamespace>RCON.Core</RootNamespace>
+    <RootNamespace>RCON.Commands.Minecraft.Java</RootNamespace>
   </PropertyGroup>
 
 </Project>

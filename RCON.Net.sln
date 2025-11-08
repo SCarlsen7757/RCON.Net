@@ -1,9 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36623.8 d17.14
+VisualStudioVersion = 17.14.36623.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RCON.Net.Core", "RCON.Net\RCON.Net.Core.csproj", "{5D27B1B7-BA87-415B-9325-F745E2398FF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RCON.Net.Commands", "RCON.Net.Commands\RCON.Net.Commands.csproj", "{1FA5AD93-4BAE-DAED-EF69-2716214ED39C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RCON.Net.Tests", "RCON.Net.Tests\RCON.Net.Tests.csproj", "{3E8AA7A6-38B3-F251-BFAC-15D86E49D925}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RCON.Net.Commands.Minecraft.Java", "RCON.Net.Commands.Minecraft\RCON.Net.Commands.Minecraft.Java.csproj", "{315BA798-C7FA-A528-2DDC-A87138AD2E47}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +26,18 @@ Global
 		{5D27B1B7-BA87-415B-9325-F745E2398FF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D27B1B7-BA87-415B-9325-F745E2398FF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D27B1B7-BA87-415B-9325-F745E2398FF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FA5AD93-4BAE-DAED-EF69-2716214ED39C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FA5AD93-4BAE-DAED-EF69-2716214ED39C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FA5AD93-4BAE-DAED-EF69-2716214ED39C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FA5AD93-4BAE-DAED-EF69-2716214ED39C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E8AA7A6-38B3-F251-BFAC-15D86E49D925}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E8AA7A6-38B3-F251-BFAC-15D86E49D925}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E8AA7A6-38B3-F251-BFAC-15D86E49D925}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E8AA7A6-38B3-F251-BFAC-15D86E49D925}.Release|Any CPU.Build.0 = Release|Any CPU
+		{315BA798-C7FA-A528-2DDC-A87138AD2E47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{315BA798-C7FA-A528-2DDC-A87138AD2E47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{315BA798-C7FA-A528-2DDC-A87138AD2E47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{315BA798-C7FA-A528-2DDC-A87138AD2E47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
