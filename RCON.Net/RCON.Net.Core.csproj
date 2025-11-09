@@ -9,7 +9,7 @@
 		<PackageId>RCON.Net</PackageId>
 		<Authors>Mark Carlsen</Authors>
 		<Description>RCON client core lib.</Description>
-		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<PackageTags>RCON</PackageTags>
 	</PropertyGroup>
 

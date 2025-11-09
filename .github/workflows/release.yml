@@ -1,0 +1,60 @@
+name: Release NuGet Package
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    strategy:
+      matrix:
+        include:
+          - sdk: '8.0.x'
+            tf: net8.0
+          - sdk: '9.0.x'
+            tf: net9.0
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ matrix.sdk }}
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release --no-restore -f ${{ matrix.tf }}
+
+      - name: Run tests
+        run: dotnet test --configuration Release --no-build --verbosity normal -f ${{ matrix.tf }}
+
+      - name: Pack NuGet package
+        run: dotnet pack RCON.Net/RCON.Net.Core.csproj --configuration Release --no-build --output ./nupkg
+
+      - name: Publish to NuGet.org
+        if: secrets.NUGET_API_KEY != ''
+        run: |
+          dotnet nuget push ./nupkg/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        if: success()
+        with:
+          files: ./nupkg/*.nupkg
+          tag_name: v${{ env.GitVersion_SemVer }}
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
