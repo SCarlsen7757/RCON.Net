@@ -76,7 +76,7 @@ jobs:
         id: gitversion
 
       - name: Pack NuGet package
-        run: dotnet pack RCON.Net/RCON.Net.Core.csproj --configuration Release --output ./nupkg /p:PackageVersion=v${{ steps.gitversion.outputs.MajorMinorPatch }}
+        run: dotnet pack RCON.Net/RCON.Net.Core.csproj --configuration Release --output ./nupkg /p:PackageVersion=${{ steps.gitversion.outputs.MajorMinorPatch }}
 
       - name: Publish to NuGet.org
         run: |
