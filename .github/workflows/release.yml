@@ -45,7 +45,7 @@ jobs:
         run: dotnet pack RCON.Net/RCON.Net.Core.csproj --configuration Release --no-build --output ./nupkg
 
       - name: Publish to NuGet.org
-        if: secrets.NUGET_API_KEY != ''
+        if: ${{ secrets.NUGET_API_KEY != '' }}
         run: |
           dotnet nuget push ./nupkg/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
