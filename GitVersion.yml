@@ -6,6 +6,7 @@ branches:
     increment: Minor
     track-merge-target: false
     is-main-branch: true
+    pre-release-tag: ci
   develop:
     regex: ^develop$
     label: beta
