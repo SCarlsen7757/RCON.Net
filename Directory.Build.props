@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
-  <ItemGroup>
- <PackageReference Include="GitVersion.MsBuild" Version="6.*" PrivateAssets="all" />
-  </ItemGroup>
-
   <!-- Common properties for all projects -->
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    
+
     <!-- Company and Author information -->
     <Authors>Mark Carlsen</Authors>
     <Description>RCON Protocol client library for .NET</Description>
@@ -17,18 +13,11 @@
     <PackageProjectUrl>https://github.com/SCarlsen7757/RCON.Net</PackageProjectUrl>
     <RepositoryUrl>https://github.com/SCarlsen7757/RCON.Net</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    
-  <!-- Enable GitVersion to update version -->
+    <PackageTags>RCON;Minecraft;Server-Administration</PackageTags>
+
+    <!-- Generate assembly attributes -->
     <GenerateAssemblyVersionAttribute>true</GenerateAssemblyVersionAttribute>
     <GenerateAssemblyFileVersionAttribute>true</GenerateAssemblyFileVersionAttribute>
     <GenerateAssemblyInformationalVersionAttribute>true</GenerateAssemblyInformationalVersionAttribute>
-  </PropertyGroup>
-
-  <!-- Version information from GitVersion -->
-  <PropertyGroup>
-    <Version>$(GitVersion_SemVer)</Version>
-  <FileVersion>$(GitVersion_AssemblySemFileVer)</FileVersion>
-    <AssemblyVersion>$(GitVersion_AssemblySemVer)</AssemblyVersion>
-    <InformationalVersion>$(GitVersion_InformationalVersion)</InformationalVersion>
   </PropertyGroup>
 </Project>
