@@ -62,8 +62,12 @@ jobs:
       - name: Build (all target frameworks)
         run: dotnet build --configuration Release --no-restore
 
+      - name: Calculate GitVersion
+        uses: gittools/actions/gitversion/execute@v0
+        id: gitversion
+
       - name: Pack NuGet package
-        run: dotnet pack RCON.Net/RCON.Net.Core.csproj --configuration Release --output ./nupkg
+        run: dotnet pack RCON.Net/RCON.Net.Core.csproj --configuration Release --output ./nupkg /p:PackageVersion=${{ steps.gitversion.outputs.NuGetVersionV3 }}
 
       - name: Publish to NuGet.org
         run: |
@@ -78,7 +82,7 @@ jobs:
         if: success()
         with:
           files: ./nupkg/*.nupkg
-          tag_name: v${{ env.GitVersion_SemVer }}
+          tag_name: v${{ steps.gitversion.outputs.SemVer }}
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
