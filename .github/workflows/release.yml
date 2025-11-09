@@ -64,7 +64,7 @@ jobs:
 
       - name: Install GitVersion CLI
         run: |
-          dotnet tool install --global GitVersion.Tool --version 6*
+          dotnet tool install --global GitVersion.Tool --version 6.*
           echo "PATH=$HOME/.dotnet/tools:$PATH" >> $GITHUB_ENV
 
       - name: Calculate GitVersion
