@@ -91,7 +91,7 @@ jobs:
         if: success()
         with:
           files: ./nupkg/*.nupkg
-          tag_name: v${{ steps.gitversion.outputs.SemVer }}
+          tag_name: v${{ steps.gitversion.outputs.MajorMinorPatch }}
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
