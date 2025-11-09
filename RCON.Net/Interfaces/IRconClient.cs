@@ -31,5 +31,15 @@ namespace RCON.Core.Interfaces
         /// Sends a command and returns the raw response string
         /// </summary>
         Task<string> ExecuteCommandAsync(string command, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Executes the specified command asynchronously and returns the result.
+        /// </summary>
+        /// <typeparam name="T">The type of the result returned by the command.</typeparam>
+        /// <param name="command">The command to execute. Must not be <see langword="null"/>.</param>
+        /// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+        /// <returns>A task that represents the asynchronous operation. The task result contains the result of the command
+        /// execution.</returns>
+        Task<T> ExecuteCommandAsync<T>(ICommand<T> command, CancellationToken cancellationToken = default);
     }
 }

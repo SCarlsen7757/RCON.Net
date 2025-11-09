@@ -1,4 +1,5 @@
-using RCON.Commands.Minecraft.Java;
+using RCON.Commands.Minecraft.Java.Whitelist;
+using RCON.Commands.Minecraft.Java.Whitelist.Models;
 
 namespace RCON.Net.Tests.Commands.Minecraft.Java
 {
@@ -8,7 +9,7 @@ namespace RCON.Net.Tests.Commands.Minecraft.Java
         public void Add_WithPlayerName_ReturnsCorrectCommand()
         {
             // Arrange & Act
-            var command = WhitelistCommand.Add("Player1");
+            var command = WhitelistCommands.AddPlayer("Player1");
 
             // Assert
             Assert.Equal("whitelist add Player1", command.Build());
@@ -18,35 +19,35 @@ namespace RCON.Net.Tests.Commands.Minecraft.Java
         public void Add_WithNullPlayerName_ThrowsException()
         {
             // Act & Assert
-            Assert.Throws<ArgumentException>(() => WhitelistCommand.Add(null!));
+            Assert.Throws<ArgumentException>(() => WhitelistCommands.AddPlayer(null!));
         }
 
         [Fact]
         public void Add_WithEmptyPlayerName_ThrowsException()
         {
             // Act & Assert
-            Assert.Throws<ArgumentException>(() => WhitelistCommand.Add(""));
+            Assert.Throws<ArgumentException>(() => WhitelistCommands.AddPlayer(""));
         }
 
         [Fact]
         public void Add_WithWhitespacePlayerName_ThrowsException()
         {
             // Act & Assert
-            Assert.Throws<ArgumentException>(() => WhitelistCommand.Add("   "));
+            Assert.Throws<ArgumentException>(() => WhitelistCommands.AddPlayer("   "));
         }
 
         [Fact]
         public void Add_Parse_SuccessResponse()
         {
             // Arrange
-            var command = WhitelistCommand.Add("Player1");
+            var command = WhitelistCommands.AddPlayer("Player1");
             var response = "Added Player1 to the whitelist";
 
             // Act
             var result = command.Parse(response);
 
             // Assert
-            Assert.Equal(WhitelistModificationStatus.Success, result.Status);
+            Assert.Equal(ModificationStatus.Success, result.Status);
             Assert.Equal("Player1", result.PlayerName);
             Assert.Contains("Added", result.Message);
         }
@@ -55,14 +56,14 @@ namespace RCON.Net.Tests.Commands.Minecraft.Java
         public void Add_Parse_AlreadyWhitelistedResponse()
         {
             // Arrange
-            var command = WhitelistCommand.Add("Player1");
+            var command = WhitelistCommands.AddPlayer("Player1");
             var response = "Player is already whitelisted";
 
             // Act
             var result = command.Parse(response);
 
             // Assert
-            Assert.Equal(WhitelistModificationStatus.AlreadyWhitelisted, result.Status);
+            Assert.Equal(ModificationStatus.AlreadyWhitelisted, result.Status);
             Assert.Equal("Player1", result.PlayerName);
         }
 
@@ -70,14 +71,14 @@ namespace RCON.Net.Tests.Commands.Minecraft.Java
         public void Add_Parse_PlayerDoesNotExistResponse()
         {
             // Arrange
-            var command = WhitelistCommand.Add("Player7");
+            var command = WhitelistCommands.AddPlayer("Player7");
             var response = "That player does not exist";
 
             // Act
             var result = command.Parse(response);
 
             // Assert
-            Assert.Equal(WhitelistModificationStatus.PlayerDoesNotExist, result.Status);
+            Assert.Equal(ModificationStatus.PlayerDoesNotExist, result.Status);
             Assert.Equal("Player7", result.PlayerName);
         }
 
@@ -85,7 +86,7 @@ namespace RCON.Net.Tests.Commands.Minecraft.Java
         public void List_ReturnsCorrectCommand()
         {
             // Arrange & Act
-            var command = WhitelistCommand.List();
+            var command = WhitelistCommands.GetPlayers();
 
             // Assert
             Assert.Equal("whitelist list", command.Build());
@@ -95,7 +96,7 @@ namespace RCON.Net.Tests.Commands.Minecraft.Java
         public void List_Parse_MultiplePlayersResponse()
         {
             // Arrange
-            var command = WhitelistCommand.List();
+            var command = WhitelistCommands.GetPlayers();
             var response = "There are 2 whitelisted player(s): Player1, Player2";
 
             // Act
@@ -111,7 +112,7 @@ namespace RCON.Net.Tests.Commands.Minecraft.Java
         public void List_Parse_NoPlayersResponse()
         {
             // Arrange
-            var command = WhitelistCommand.List();
+            var command = WhitelistCommands.GetPlayers();
             var response = "There are 0 whitelisted player(s): ";
 
             // Act
@@ -125,7 +126,7 @@ namespace RCON.Net.Tests.Commands.Minecraft.Java
         public void List_Parse_EmptyResponse()
         {
             // Arrange
-            var command = WhitelistCommand.List();
+            var command = WhitelistCommands.GetPlayers();
             var response = "";
 
             // Act
@@ -139,7 +140,7 @@ namespace RCON.Net.Tests.Commands.Minecraft.Java
         public void Off_ReturnsCorrectCommand()
         {
             // Arrange & Act
-            var command = WhitelistCommand.Off();
+            var command = WhitelistCommands.Disable();
 
             // Assert
             Assert.Equal("whitelist off", command.Build());
@@ -149,7 +150,7 @@ namespace RCON.Net.Tests.Commands.Minecraft.Java
         public void Off_Parse_WhitelistTurnedOffResponse()
         {
             // Arrange
-            var command = WhitelistCommand.Off();
+            var command = WhitelistCommands.Disable();
             var response = "Whitelist is now turned off";
 
             // Act
@@ -165,7 +166,7 @@ namespace RCON.Net.Tests.Commands.Minecraft.Java
         public void Off_Parse_WhitelistAlreadyOffResponse()
         {
             // Arrange
-            var command = WhitelistCommand.Off();
+            var command = WhitelistCommands.Disable();
             var response = "Whitelist is already turned off";
 
             // Act
@@ -180,7 +181,7 @@ namespace RCON.Net.Tests.Commands.Minecraft.Java
         public void On_ReturnsCorrectCommand()
         {
             // Arrange & Act
-            var command = WhitelistCommand.On();
+            var command = WhitelistCommands.Enable();
 
             // Assert
             Assert.Equal("whitelist on", command.Build());
@@ -190,7 +191,7 @@ namespace RCON.Net.Tests.Commands.Minecraft.Java
         public void On_Parse_WhitelistTurnedOnResponse()
         {
             // Arrange
-            var command = WhitelistCommand.On();
+            var command = WhitelistCommands.Enable();
             var response = "Whitelist is now turned on";
 
             // Act
@@ -206,7 +207,7 @@ namespace RCON.Net.Tests.Commands.Minecraft.Java
         public void On_Parse_WhitelistAlreadyOnResponse()
         {
             // Arrange
-            var command = WhitelistCommand.On();
+            var command = WhitelistCommands.Enable();
             var response = "Whitelist is already turned on";
 
             // Act
@@ -221,7 +222,7 @@ namespace RCON.Net.Tests.Commands.Minecraft.Java
         public void Reload_ReturnsCorrectCommand()
         {
             // Arrange & Act
-            var command = WhitelistCommand.Reload();
+            var command = WhitelistCommands.ReloadConfiguration();
 
             // Assert
             Assert.Equal("whitelist reload", command.Build());
@@ -231,7 +232,7 @@ namespace RCON.Net.Tests.Commands.Minecraft.Java
         public void Reload_Parse_ReloadedResponse()
         {
             // Arrange
-            var command = WhitelistCommand.Reload();
+            var command = WhitelistCommands.ReloadConfiguration();
             var response = "Reloaded the whitelist";
 
             // Act
@@ -245,7 +246,7 @@ namespace RCON.Net.Tests.Commands.Minecraft.Java
         public void Remove_WithPlayerName_ReturnsCorrectCommand()
         {
             // Arrange & Act
-            var command = WhitelistCommand.Remove("Player1");
+            var command = WhitelistCommands.RemovePlayer("Player1");
 
             // Assert
             Assert.Equal("whitelist remove Player1", command.Build());
@@ -255,28 +256,28 @@ namespace RCON.Net.Tests.Commands.Minecraft.Java
         public void Remove_WithNullPlayerName_ThrowsException()
         {
             // Act & Assert
-            Assert.Throws<ArgumentException>(() => WhitelistCommand.Remove(null!));
+            Assert.Throws<ArgumentException>(() => WhitelistCommands.RemovePlayer(null!));
         }
 
         [Fact]
         public void Remove_WithEmptyPlayerName_ThrowsException()
         {
             // Act & Assert
-            Assert.Throws<ArgumentException>(() => WhitelistCommand.Remove(""));
+            Assert.Throws<ArgumentException>(() => WhitelistCommands.RemovePlayer(""));
         }
 
         [Fact]
         public void Remove_Parse_SuccessResponse()
         {
             // Arrange
-            var command = WhitelistCommand.Remove("Player1");
+            var command = WhitelistCommands.RemovePlayer("Player1");
             var response = "Removed Player1 from the whitelist";
 
             // Act
             var result = command.Parse(response);
 
             // Assert
-            Assert.Equal(WhitelistModificationStatus.Success, result.Status);
+            Assert.Equal(ModificationStatus.Success, result.Status);
             Assert.Equal("Player1", result.PlayerName);
         }
 
@@ -284,14 +285,14 @@ namespace RCON.Net.Tests.Commands.Minecraft.Java
         public void Remove_Parse_PlayerNotWhitelistedResponse()
         {
             // Arrange
-            var command = WhitelistCommand.Remove("tets");
+            var command = WhitelistCommands.RemovePlayer("tets");
             var response = "Player is not whitelisted";
 
             // Act
             var result = command.Parse(response);
 
             // Assert
-            Assert.Equal(WhitelistModificationStatus.NotWhitelisted, result.Status);
+            Assert.Equal(ModificationStatus.NotWhitelisted, result.Status);
             Assert.Equal("tets", result.PlayerName);
         }
     }
