@@ -7,11 +7,8 @@ on:
       - main
 
 jobs:
-  release:
+  test:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
 
     strategy:
       matrix:
@@ -36,13 +33,37 @@ jobs:
         run: dotnet restore
 
       - name: Build
-        run: dotnet build --configuration Release --no-restore -f ${{ matrix.tf }}
+        run: dotnet build --configuration Release --no-restore
 
       - name: Run tests
-        run: dotnet test --configuration Release --no-build --verbosity normal -f ${{ matrix.tf }}
+        run: dotnet test --configuration Release --no-build --verbosity normal
+
+  publish:
+    runs-on: ubuntu-latest
+    needs: test
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET (for pack)
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build (all target frameworks)
+        run: dotnet build --configuration Release --no-restore
 
       - name: Pack NuGet package
-        run: dotnet pack RCON.Net/RCON.Net.Core.csproj --configuration Release --no-build --output ./nupkg
+        run: dotnet pack RCON.Net/RCON.Net.Core.csproj --configuration Release --output ./nupkg
 
       - name: Publish to NuGet.org
         run: |
