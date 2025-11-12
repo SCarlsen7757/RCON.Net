@@ -11,6 +11,14 @@
 		<Description>RCON client core lib.</Description>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<PackageTags>RCON</PackageTags>
+		<PackageIcon>RCON.Net.png</PackageIcon>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Update="icon\RCON.Net.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
 
 </Project>

@@ -4,6 +4,13 @@
 		<ProjectReference Include="..\RCON.Net.Commands\RCON.Net.Commands.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Update="icon\RCON.Net.Commands.Minecraft.Java.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
+
 	<PropertyGroup>
 		<TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
@@ -15,6 +22,7 @@
 		<Description>RCON commands lib for Minecraft Java edition.</Description>
 		<PackageTags>RCON;Commands;Minecraft</PackageTags>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<PackageIcon>RCON.Net.Commands.Minecraft.Java.png</PackageIcon>
 	</PropertyGroup>
 
 </Project>
