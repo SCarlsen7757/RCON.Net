@@ -3,6 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ![.NET](https://img.shields.io/badge/.NET-8.0-purple.svg)
 ![.NET](https://img.shields.io/badge/.NET-9.0-purple.svg)
+![.NET](https://img.shields.io/badge/.NET-10.0-purple.svg)
 [![NuGet](https://img.shields.io/nuget/v/RCON.Net?label=NuGet)](https://www.nuget.org/packages/RCON.Net/)
 
 RCON.Net is a small, modular .NET library that implements an RCON client and a set of command helpers (including Minecraft Java commands) to interact with servers supporting the RCON protocol.
