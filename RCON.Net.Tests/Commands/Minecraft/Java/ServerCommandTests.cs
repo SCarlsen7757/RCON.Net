@@ -15,7 +15,7 @@ namespace RCON.Net.Tests.Commands.Minecraft.Java
         public void VersionCommand_Parse_WellFormedResponse()
         {
             DateTime buildTime = new(2025, 10, 07, 09, 14, 11, DateTimeKind.Utc);
-            var response = "Server version info:id =1.21.10 name =1.21.10 data =4556 series = main protocol =773 (0x305) build_time = Tue Oct0709:14:11 UTC2025 pack_resource =69.0 pack_data =88.0 stable = yes";
+            var response = "Server version info:id = 1.21.10name = 1.21.10data = 4556series = mainprotocol = 773 (0x305)build_time = Tue Oct 07 09:14:11 UTC 2025pack_resource = 69.0pack_data = 88.0stable = yes";
             var cmd = ServerCommands.GetVersion();
             var result = cmd.Parse(response);
 
