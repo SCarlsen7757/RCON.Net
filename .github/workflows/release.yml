@@ -35,14 +35,14 @@ jobs:
         with:
           dotnet-version: ${{ matrix.sdk }}
 
-      - name: Restore dependencies
-        run: dotnet restore
+      - name: Restore dependencies for target framework
+        run: dotnet restore -p:TargetFramework=${{ matrix.tf }}
 
       - name: Build
-        run: dotnet build --configuration Release --no-restore
+        run: dotnet build --configuration Release --no-restore -f ${{ matrix.tf }}
 
       - name: Run tests
-        run: dotnet test --configuration Release --no-build --verbosity normal
+        run: dotnet test --configuration Release --no-build --framework ${{ matrix.tf }} --verbosity normal
 
   publish:
     runs-on: ubuntu-latest
@@ -67,7 +67,7 @@ jobs:
       - name: Setup .NET (for pack)
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '9.0.x'
+          dotnet-version: '10.0.x'
 
       - name: Restore dependencies
         run: dotnet restore
