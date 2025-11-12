@@ -16,11 +16,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Update="icon\RCON.Net.png">
+	  <None Include="icon/RCON.Net.png">
 	    <Pack>True</Pack>
 	    <PackagePath>\</PackagePath>
 	  </None>
-	  <None Update="README.md">
+	  <None Include="README.md">
 	    <Pack>True</Pack>
 	    <PackagePath>\</PackagePath>
 	  </None>
