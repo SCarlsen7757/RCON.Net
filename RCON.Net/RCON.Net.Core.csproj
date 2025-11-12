@@ -12,10 +12,15 @@
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<PackageTags>RCON</PackageTags>
 		<PackageIcon>RCON.Net.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
 
 	<ItemGroup>
 	  <None Update="icon\RCON.Net.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	  <None Update="README.md">
 	    <Pack>True</Pack>
 	    <PackagePath>\</PackagePath>
 	  </None>
